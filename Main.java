@@ -47,19 +47,8 @@ class Main {
 			Thread.sleep(1000);
 			clearScreen();
 			
-			//if (durationSeconds == 0 && durationMinutes == 0 && durationHours == 0) {
-			//	System.out.println("Timer finished!");
-			//	break;
-			//}
-			
 			durationSeconds = durationSeconds -1;
 			
-			//if (durationSeconds == 0) {
-				//if (durationMinutes != 0) {
-					//durationMinutes = durationMinutes - 1;
-				//}
-				//durationSeconds = 59;
-			//}
 			if (durationSeconds == 0 && durationMinutes == 0) {
 				durationHours = durationHours - 1;
 				durationMinutes = 59;
@@ -76,23 +65,51 @@ class Main {
 }
 		
 	static void stopwatch() throws InterruptedException, IOException {
-		int durationSeconds = 0, durationMinutes = 0, durationHours = 0;
+		int durationSeconds = 0, durationSeconds1 = 0, durationMinutes = 0, durationMinutes1 = 0, durationHours = 0, durationHours1 = 0;
+		
 		while (true) {
-			System.out.println(durationHours + ":" + durationMinutes + ":" + durationSeconds);
+			
+			System.out.print(durationHours);
+			System.out.println(durationHours1 + ":" + durationMinutes + durationMinutes1 + ":" + durationSeconds + durationSeconds1);
 			Thread.sleep(1000);
 			clearScreen();
 			
-			durationSeconds = durationSeconds + 1;
+			durationSeconds1 = durationSeconds1 +1;
 			
-			if (durationSeconds == 60) {
+			if (durationSeconds1 == 10) {
+				
+				durationSeconds1 = 0;
+				durationSeconds = durationSeconds + 1;
+			}
+			
+			if (durationSeconds == 6) {
+				
+				durationMinutes1 = durationMinutes1 + 1;
 				durationSeconds = 0;
+				durationSeconds1 = 0;
+			}
+			
+			if (durationMinutes1 == 10) {
+				
+				durationMinutes1 = 0;
 				durationMinutes = durationMinutes + 1;
 			}
 			
-			if (durationMinutes == 60) {
+			if (durationMinutes == 6) {
+				
 				durationMinutes = 0;
+				durationMinutes1 = 0;
+				durationHours1 = durationHours1 + 1;
+				
+			}
+			
+			if (durationHours1 == 10) {
+				
+				durationHours1 = 0;
 				durationHours = durationHours + 1;
 			}
 		}
+		
+		
 	}
 }
